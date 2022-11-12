@@ -1,6 +1,6 @@
 import pytest
 
-from classes import Storage
+from first_attempt import Storage
 
 
 class TestStorage:

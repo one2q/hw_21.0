@@ -12,7 +12,6 @@ class Storage:
 		self.__capacity = capacity
 
 	def print_items(self) -> str:
-		print(f'В {self} хранятся:')
 		return '\n'.join([f'{key} - {value}' for key, value in self.__items.items()])
 
 	def _get_keys_items(self):
