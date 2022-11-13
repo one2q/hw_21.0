@@ -2,21 +2,31 @@ class SrorageExeptions(Exception):
 	message = "Общая ошибка склада"
 
 
-class SpaceExceptions(SrorageExeptions):
+class SpaceException(SrorageExeptions):
 	""""Ошибка отсутствия свободного места"""
-	message = 'Ошибка: Нет свободного места'
+	message = '!!!!!!!!!!!!!!!!!!!!!!!Ошибка: Нет свободного места!!!!!!!!!!!!!!!!!!!!!!!'
 
 
-class ShopUniqueExceptions(SrorageExeptions):
+class ShopUniqueException(SrorageExeptions):
 	""""Ошибка ограничения количества уникальных товаров"""
-	message = 'Ошибка: Количество уникальных товаров не может быть больше 5'
+	message = '!!!!!!!!!!!!!Ошибка: Количество уникальных товаров в магазине не может быть больше 5!!!!!!!!!!!!!!!!'
 
 
-class ItemExceptions(SrorageExeptions):
+class ItemException(SrorageExeptions):
 	""""Ошибка отсутствия товаров в наличии"""
-	message = 'Ошибка: Нет таких предметов'
+	message = '!!!!!!!!!!!!!!!!!!!!!!!Ошибка: Нет таких предметов!!!!!!!!!!!!!!!!!!!!!!!'
 
 
-class ItemAmountExceptions(SrorageExeptions):
+class ItemAmountException(SrorageExeptions):
 	""""Ошибка количества запрашиваемых товаров"""
-	message = 'Ошибка: Нет такого количества товаров'
+	message = '!!!!!!!!!!!!!!!!!!!!!!!Ошибка: Нет такого количества товаров!!!!!!!!!!!!!!!!!!!!!!!'
+
+
+class RequestException(SrorageExeptions):
+	""""Ошибка запроса товаров"""
+	message = '!!!!Ошибка: запрос не корректный, пожалуйста введите строку типа: Доставить 3 собачки из склад в магазин'
+
+
+class RequestStorageException(SrorageExeptions):
+	""""Ошибка запроса товаров"""
+	message = '!!!!!!!!!!!!!!!!!!!!!!!Ошибка: пункт назначения или получения не корректный!!!!!!!!!!!!!!!!!!!!!!!'

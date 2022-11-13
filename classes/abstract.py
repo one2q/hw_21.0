@@ -7,7 +7,7 @@ class AbstractStorage(ABC):
 	"""
 
 	@abstractmethod
-	def add_item(self, name: str, amount: int):
+	def add_items(self, name: str, amount: int):
 		pass
 
 	@abstractmethod
