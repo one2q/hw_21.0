@@ -1,7 +1,7 @@
 from classes.mover import Mover
 from classes.request import Request
 from classes.shop_and_store import Shop, Store
-from custom_exceptions import RequestStorageException, RequestException, SrorageExeptions
+from custom_exceptions import SrorageExeptions
 
 fruits = {
 	'яблоки': 5,

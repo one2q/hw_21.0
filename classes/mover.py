@@ -4,6 +4,9 @@ from custom_exceptions import SpaceException
 
 
 class Mover:
+	"""
+	Класс курьер который "переносит" вещи между хранилищами
+	"""
 	def __init__(self, request: Request, storages: dict[str | StorageBase]):
 		self._request = request
 		self._from_place = storages.get(self._request.from_place)
