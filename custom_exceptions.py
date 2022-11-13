@@ -1,26 +1,32 @@
-class SpaceExceptions(Exception):
+class SrorageExeptions(Exception):
+	message = "Общая ошибка склада"
+
+
+class SpaceException(SrorageExeptions):
 	""""Ошибка отсутствия свободного места"""
-
-	def __str__(self):
-		return 'Ошибка: Нет свободного места'
+	message = '!!!!!!!!!!!!!!!!!!!!!!!Ошибка: Нет свободного места!!!!!!!!!!!!!!!!!!!!!!!'
 
 
-class ShopUniqueExceptions(Exception):
+class ShopUniqueException(SrorageExeptions):
 	""""Ошибка ограничения количества уникальных товаров"""
-
-	def __str__(self):
-		return 'Ошибка: Количество уникальных товаров не может быть больше 5'
+	message = '!!!!!!!!!!!!!Ошибка: Количество уникальных товаров в магазине не может быть больше 5!!!!!!!!!!!!!!!!'
 
 
-class ItemExceptions(Exception):
+class ItemException(SrorageExeptions):
 	""""Ошибка отсутствия товаров в наличии"""
-
-	def __str__(self):
-		return 'Ошибка: Нет таких предметов'
+	message = '!!!!!!!!!!!!!!!!!!!!!!!Ошибка: Нет таких предметов!!!!!!!!!!!!!!!!!!!!!!!'
 
 
-class ItemAmountExceptions(Exception):
+class ItemAmountException(SrorageExeptions):
 	""""Ошибка количества запрашиваемых товаров"""
+	message = '!!!!!!!!!!!!!!!!!!!!!!!Ошибка: Нет такого количества товаров!!!!!!!!!!!!!!!!!!!!!!!'
 
-	def __str__(self):
-		return 'Ошибка: Нет такого количества товаров'
+
+class RequestException(SrorageExeptions):
+	""""Ошибка запроса товаров"""
+	message = '!!!!Ошибка: запрос не корректный, пожалуйста введите строку типа: Доставить 3 собачки из склад в магазин'
+
+
+class RequestStorageException(SrorageExeptions):
+	""""Ошибка запроса товаров"""
+	message = '!!!!!!!!!!!!!!!!!!!!!!!Ошибка: пункт назначения или получения не корректный!!!!!!!!!!!!!!!!!!!!!!!'

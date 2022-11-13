@@ -1,64 +1,49 @@
-from classes import *
-
-# 'store' if from_place == 'shop' else 'shop'
-
-shop = Shop(20)
-store = Store(100)
+from classes.mover import Mover
+from classes.request import Request
+from classes.shop_and_store import Shop, Store
+from custom_exceptions import SrorageExeptions
 
 fruits = {
-	'apple': 5,
-	'orange': 10,
-	'watermelon': 7,
+	'яблоки': 5,
+	'апельсины': 3,
+	'арбузы': 2,
+	'бананы': 2,
+}
+vegetables = {
+	'помидоры': 5,
+	'морковь': 7,
+	'картофель': 4,
 }
 
-[store.add_items(name, amount) for name, amount in fruits.items()]
-print(store.print_items())
-print(shop.print_items())
-print('-' * 20)
+shop = Shop(fruits)
+store = Store(vegetables)
+
+storages = {
+	'магазин': shop,
+	'склад': store,
+}
 
 
-# request = Request()
-answer = True
-while answer:
-	print(store.print_items())
-	print(shop.print_items())
-	print('Hi, user')
-	product = input('please enter name of product witch u wanna delivery\n').lower()
-	amount = int(input('amount\n'))
-	from_place = input('from what place u needed to take - shop or store\n').lower()
-	to = 'store' if from_place == 'shop' else 'shop'
+def main():
+	while True:
+		for key, value in storages.items():
+			print(f'В/На {key}е сейчас\n{value.get_items()}\n')
+		print('Здравствуй user, если хочешь воспользоваться нашими услугами')
+		print('Введи строку типа: "Доставить 3 собачки из склад в магазин"\n')
+		print('Если хочешь остановить программу, введи "стоп" или "stop"\n')
+		user_request = input().lower()
+		if user_request == "стоп" or user_request == "stop":
+			print("Пока")
+			break
+		try:
+			request = Request(user_request)
+			mover = Mover(request, storages)
+			mover.move()
+		except SrorageExeptions as error:
+			print(error.message)
+		user_request = None
 
-	request = Request(from_place, to, amount,product)
-	print('Thanks, i need time to prepare something')
-	if from_place == 'shop':
-		if shop.check_item_in(product):
-			try:
-				shop.remove(product, amount)
-				store.add_items(product, amount)
-			except ItemExceptions as e:
-				print(e)
-			except ItemAmountExceptions as e:
-				print(e)
-		else:
-			try:
-				raise ItemExceptions
-			except ItemExceptions as e:
-				print(e)
-	else:
-		if store.check_item_in(product):
-			try:
-				store.remove(product, amount)
-				shop.add_items(product, amount)
-			except ItemExceptions as e:
-				print(e)
-			except ItemAmountExceptions as e:
-				print(e)
-		else:
-			try:
-				raise ItemExceptions
-			except ItemExceptions as e:
-				print(e)
 
-	print(store.print_items())
-	print(shop.print_items())
-	break
+if __name__ == '__main__':
+	main()
+
