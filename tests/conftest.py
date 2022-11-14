@@ -1,10 +1,9 @@
 import pytest
 
+from classes.base import StorageBase
 
 
-@pytest.fixture(autouse=True)
-def item_in():
-	res = {
-		'tea': 1
-	}
-	return res
+@pytest.fixture()
+def storage():
+    yield StorageBase({'apple': 3}, 10)
+
